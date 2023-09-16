@@ -1,9 +1,11 @@
 import React from 'react'
+import Header from './components/Header'
 
 const App = () => {
   return (
     <div>
-      <h1>mern app</h1>
+      
+      <Header />
     </div>
   )
 }
