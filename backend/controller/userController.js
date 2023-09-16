@@ -10,7 +10,7 @@ import generateToken from "../utils/generateToken.js";
 const authUser = asyncHandler(async(req, res) => {
  const {email, password} = req.body;
  const user = await User.findOne({email});
- if(user){
+ if(user && (await user.matchpasswords(password))){
   generateToken(res, user._id)
   res.status(201).json({
     message: "Login successful",
