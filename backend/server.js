@@ -9,7 +9,9 @@ connectDB()
 const port = process.env.PORT || 3000;
 
 const app = express();
-
+app.use(express.json())
+// this we allow form data to be sent
+app.use(express.urlencoded({extended: true}))
 app.use('/api/users', userRoutes)
 app.get('/', (req, res) => {
      res.send("server is ready");
