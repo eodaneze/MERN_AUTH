@@ -14,3 +14,7 @@ router.post('/logout', logoutUser);
 router.route('/profile').get(getUserProfile).put(updateUserProfile)
 
 export default router
+
+
+// SQY9hGCTQNLw1Doh
+// dancode
