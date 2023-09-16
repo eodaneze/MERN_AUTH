@@ -28,7 +28,7 @@ userSchema.pre('save', async function(next){
 })
 
 // compare password
-userSchema.methods.matchpasswords = async function(enteredPassword){
+userSchema.methods.matchpassword = async function(enteredPassword){
      return await bcrypt.compare(enteredPassword, this.password)
 }
 const User = mongoose.model('User', userSchema);

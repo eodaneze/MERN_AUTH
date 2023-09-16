@@ -10,7 +10,7 @@ import generateToken from "../utils/generateToken.js";
 const authUser = asyncHandler(async(req, res) => {
  const {email, password} = req.body;
  const user = await User.findOne({email});
- if(user && (await user.matchpasswords(password))){
+ if(user && (await user.matchpassword(password))){
   generateToken(res, user._id)
   res.status(201).json({
     message: "Login successful",
@@ -57,7 +57,11 @@ const registerUser = asyncHandler(async(req, res) => {
 // route POST/api/users/logout
 // @access public
 const logoutUser = asyncHandler(async(req, res) => {
-  res.status(200).json({message: "logout User"});
+  res.cookie('jwt', '', {
+    httpOnly: true,
+    expires: new Date(0)
+  })
+  res.status(200).json({message: "Logged out successfully"});
 });
 // @desc GET user profile
 // route POST/api/users/profile
